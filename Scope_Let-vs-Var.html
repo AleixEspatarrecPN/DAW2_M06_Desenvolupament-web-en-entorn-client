@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style lang = "css">
+        body{
+            margin: 3%;
+        }
+    
+        </style>    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sope & Let vs Var</title>
+</head>
+<body>
+    <a> En aquesta ocasió posarem a prova el SCOPE en JavaScript, aquest ens permet detrminar l'abast que tindra una variable en el nostre codi. Per fer-ho hem de tenir en compte els diferents tipus de variables que hi ha com: let, const i var. A continuació pegarem una petita ullada per introduir-nos.</a>
+    </br>
+
+</body>
+<script>
+    //Les variables let declarades dintre d'un bloc sols podran utilitzar-se en el mateix bloc.
+    //Per posar-ho a prova veurem un exemple amb missatges de la consola.
+let x1 = "Contingut fora del bloc";
+
+if (true) {
+	let x1 = "Contingut dintre del bloc";
+	console.log(x1); //Ara ens l'imprimira dintre del bloc.
+}
+
+console.log(x1) //Ara ens l'imprimira fora del bloc.
+
+    //Ara veurem un exmple amb var.
+    //Si anteriorment el tipus de variable hagues sigut var llavors si s'hagues pogut sobreescriure.
+    //A continuació posarem a prova aquest tipus de variable de la mateixa forma que ho hem fet anteriorment
+
+var x2 = "Contingut fora del bloc";
+
+if (true) {
+	var x2 = "Contingut dintre del bloc";
+	console.log(x2); //Ara ens l'imprimira dintre del bloc.
+}
+
+console.log(x2); //Ara ens l'imprimira dintre del bloc.
+    
+//I tal com hem pogut comprovar amb var conservem la variable en tot moment.
+//Aquesta és una de les raons per les que no es recomana utilitzar aquest tipus de variables donat que són més propenses a donar bugs.
+
+</script>
+</html>
