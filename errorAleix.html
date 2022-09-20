@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error login Aleix</title>
+</head>
+<style> 
+body { text-align: center;
+    margin: 20px;
+     };
+
+</style>
+<body>
+
+    <h1 id="tit">Inicia Sessió</h1>
+
+<div>  
+    <input type = "text"  name="login" id ="login" placeholder="Nom" required/> <br>
+    <input type = "key" name="key" id ="key" placeholder="Contrassenya" required/> <br>
+    <input type = "button" text = "Enviar" onclick="valid()" value = "Enviar"> <br>
+    <h2 id="msg"> </h2>
+    <input type = "button" text = "desc" onclick="desc()" value = "Descargar dades"> <br>
+
+</div>
+    
+</body>
+<script>
+
+function valid(){
+
+    let user = document.getElementById("login").value;
+    let pass = document.getElementById("key").value;
+
+    if(user.length  === 0){  
+        alert("Error: Introdueix l'usuari");
+        document.getElementById("login").style.borderColor = "red";
+        document.getElementById("login").placeholder="Required Name";
+        document.getElementById("msg").innerHTML = "Introdueix el nom!";
+        document.getElementById("msg").style.color = "red";
+    }
+
+    if(pass.length  === 0){
+        alert("Error: Introdueix la contrassenya");
+        document.getElementById("key").style.borderColor = "red";
+        document.getElementById("key").placeholder="Required Key";
+        document.getElementById("msg").innerHTML = "Introdueix la constrassenya!";
+        document.getElementById("msg").style.color = "red";
+    }
+
+    if(user.length  === 0 & pass.length  === 0) {
+        document.getElementById("msg").innerHTML = "Introdueix l'usuari i la constrassenya!";
+        document.getElementById("msg").style.color = "red";
+    }
+
+}
+
+let desc = () => {
+    	
+        // Obtenim l'informació dels inputs.
+    	const nomD = document.getElementById("login");
+        const passD = document.getElementById("key");
+       
+        
+        // Variable per guardar l'informació.
+        let data = 
+            '\r Nom: ' + nomD.value + ' \r\n ' + 
+            'Contrassenya: ' +passD.value;
+
+        // Convertim el text a BLOB.
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = 'DadesUsuari.txt';	   // Nom del docuemnt.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        newLink.click(); 
+    }
+
+
+</script>
+</html>
